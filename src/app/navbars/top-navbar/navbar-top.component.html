@@ -1,0 +1,65 @@
+<nav
+  class="border-gray-400 border-b rounded-xl flex flex-col justify-between items-center md:flex-row md:px-6"
+>
+  <!--logo-->
+  <div class="flex flex-row gap-1 my-2 md:m-0">
+    <h3>T0PN4V</h3>
+    <h3 class="hidden md:inline"><img class="w-7" src="icons/monitor.svg" /></h3>
+    <h3 class="inline md:hidden"><img class="w-7" src="icons/mobile.svg" /></h3>
+  </div>
+
+  <button
+    class="border rounded px-2 py-1 cursor-pointer bg-gray-100 inline md:hidden hover:bg-gray-8000 transition duration-300"
+    (click)="toggleHamburgerMenu()"
+  >
+    <img class="w-6" src="icons/hamburger-menu.svg" />
+  </button>
+
+  <!--Links-->
+  <div
+    class="flex flex-col justify-between items-center gap-2 md:flex-row my-1 md:flex-wrap md:mx-2 md:my-4 transition-all duration-300 ease-in-out md:max-h-none md:opacity-100"
+    [ngClass]="{
+      'my-4': isHamburgerMenuOpened(),
+      'max-h-0': !isHamburgerMenuOpened(),
+      'max-h-96': isHamburgerMenuOpened(),
+      'opacity-0': !isHamburgerMenuOpened(),
+      'opacity-100': isHamburgerMenuOpened(),
+    }"
+  >
+    <a href="#">
+      <button
+        class="w-32 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300"
+      >
+        Home
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-32 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300"
+      >
+        Reference
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-32 not-even:border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300"
+      >
+        Prices
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-32 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300"
+      >
+        Contact
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-32 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300"
+      >
+        Login
+      </button>
+    </a>
+  </div>
+</nav>

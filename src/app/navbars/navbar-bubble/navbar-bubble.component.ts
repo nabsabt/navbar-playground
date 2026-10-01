@@ -1,0 +1,28 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit, signal } from '@angular/core';
+
+@Component({
+  selector: 'navbar-bubble',
+  templateUrl: './navbar-bubble.component.html',
+  imports: [CommonModule],
+})
+export class NavbarBubbleComponent implements OnInit {
+  public isHamburgerMenuOpened = signal<boolean>(false);
+  public isMobileView = signal<boolean>(false);
+  private breakPoint = inject(BreakpointObserver);
+
+  constructor() {
+    this.breakPoint.observe('(max-width: 768px)').subscribe((res) => {
+      !res.matches ? this.isHamburgerMenuOpened.set(false) : '';
+      !res.matches ? this.isMobileView.set(false) : this.isMobileView.set(true);
+    });
+  }
+  ngOnInit(): void {
+    console.log(`initial view is ${this.isMobileView() ? 'MOBILE' : 'PC'}`);
+  }
+
+  toggleHamburgerMenu() {
+    this.isHamburgerMenuOpened.set(!this.isHamburgerMenuOpened());
+  }
+}

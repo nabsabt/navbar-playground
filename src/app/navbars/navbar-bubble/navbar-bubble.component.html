@@ -1,0 +1,92 @@
+<nav
+  class="sticky top-1 left-1 my-1 w-fit rounded-2xl flex flex-col items-center justify-between md:flex-row md:px-6 md:gap-4 md:mx-auto"
+  [ngClass]="{
+    'w-100': isHamburgerMenuOpened(),
+    'mx-1': isHamburgerMenuOpened(),
+    'bg-gray-100': isHamburgerMenuOpened() || !isMobileView(),
+    'border-gray-400': isHamburgerMenuOpened() || !isMobileView(),
+    border: isHamburgerMenuOpened() || !isMobileView(),
+  }"
+>
+  <!--Navbar toggler (mobile)-->
+  <div class="w-full md:w-fit">
+    <button
+      class="border rounded-2xl px-2 py-1 cursor-pointer bg-gray-900 flex flex-row md:hidden hover:bg-gray-8000 transition-all duration-300"
+      (click)="toggleHamburgerMenu()"
+    >
+      <!-- <img class="w-6" src="icons/hamburger-menu.svg" /> -->
+      <p class="text-gray-100 mr-1">{{ isHamburgerMenuOpened() ? 'hide menu ' : 'show menu ' }}</p>
+      <img
+        class="w-6 transition-all"
+        [src]="isHamburgerMenuOpened() ? 'icons/hidemenu.svg' : 'icons/showmenu.svg'"
+        [ngClass]="{
+          'ml-1': isHamburgerMenuOpened(),
+        }"
+      />
+    </button>
+  </div>
+
+  <!--logo-->
+  <div
+    class="hidden flex-row gap-1 my-2 md:m-0 md:flex"
+    [ngClass]="{
+      inline: isHamburgerMenuOpened(),
+      'border-b': isHamburgerMenuOpened(),
+      'mb-2': isHamburgerMenuOpened(),
+      'pb-2': isHamburgerMenuOpened(),
+    }"
+  >
+    <h3>BUBBL3N4V</h3>
+    <h3 class="hidden md:inline"><img class="w-7" src="icons/monitor.svg" /></h3>
+    <h3 class="inline md:hidden"><img class="w-7" src="icons/mobile.svg" /></h3>
+  </div>
+
+  <!--Links-->
+  <div
+    class="flex flex-col justify-between m-8 items-center gap-2 md:flex-row my-1 md:flex-wrap md:mx-2 md:my-4 transition-all duration-300 ease-in-out md:max-h-none md:opacity-100"
+    [ngClass]="{
+      'my-4': isHamburgerMenuOpened(),
+      'max-h-0': !isHamburgerMenuOpened(),
+      'max-w-0': !isHamburgerMenuOpened() && isMobileView(),
+      'max-h-96': isHamburgerMenuOpened(),
+      'opacity-0': !isHamburgerMenuOpened(),
+      'opacity-100': isHamburgerMenuOpened(),
+    }"
+  >
+    <a href="#">
+      <button
+        class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
+      >
+        Home
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
+      >
+        Reference
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-64 not-even:border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
+      >
+        Prices
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
+      >
+        Contact
+      </button>
+    </a>
+    <a href="#">
+      <button
+        class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
+      >
+        Login
+      </button>
+    </a>
+  </div>
+</nav>
