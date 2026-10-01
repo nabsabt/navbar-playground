@@ -84,7 +84,7 @@
   [ngStyle]="{
     top: currentNavbarPos().bottom + 'px',
     left: currentNavbarPos().left + 'px',
-    width: ` ${isMobileView() ? '90dvw' : currentNavbarPos().right - currentNavbarPos().left}px`,
+    width: isMobileView() ? '95dvw' : `${currentNavbarPos().right - currentNavbarPos().left}px`,
   }"
 >
   <h5 class="font-bold text-4xl uppercase text-blue-300">{{ subMenuOpened() }}</h5>
