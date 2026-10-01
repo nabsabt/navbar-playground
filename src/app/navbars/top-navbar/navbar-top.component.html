@@ -4,8 +4,8 @@
   <!--logo-->
   <div class="flex flex-row gap-1 my-2 md:m-0">
     <h3>T0PN4V</h3>
-    <h3 class="hidden md:inline"><img class="w-7" src="icons/monitor.svg" /></h3>
-    <h3 class="inline md:hidden"><img class="w-7" src="icons/mobile.svg" /></h3>
+    <h3 class="hidden md:inline"><img class="min-w-7 w-7" src="icons/monitor.svg" /></h3>
+    <h3 class="inline md:hidden"><img class="min-w-7 w-7" src="icons/mobile.svg" /></h3>
   </div>
 
   <button
@@ -19,11 +19,8 @@
   <div
     class="flex flex-col justify-between items-center gap-2 md:flex-row my-1 md:flex-wrap md:mx-2 md:my-4 transition-all duration-300 ease-in-out md:max-h-none md:opacity-100"
     [ngClass]="{
-      'my-4': isHamburgerMenuOpened(),
-      'max-h-0': !isHamburgerMenuOpened(),
-      'max-h-96': isHamburgerMenuOpened(),
-      'opacity-0': !isHamburgerMenuOpened(),
-      'opacity-100': isHamburgerMenuOpened(),
+      'my-4 max-h-96 opacity-100': isHamburgerMenuOpened(),
+      'max-h-0 opacity-0': !isHamburgerMenuOpened(),
     }"
   >
     <a href="#">
