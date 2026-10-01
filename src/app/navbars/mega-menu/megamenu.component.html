@@ -1,0 +1,124 @@
+<nav
+  #nav
+  class="fixed h-fit top-1 my-1 rounded-r-3xl flex flex-col items-start justify-between md:translate-y-0 md:flex-row md:rounded-full md:h-fit md:px-6 md:left-1/2 md:-translate-x-1/2 md:flex-wrap md:w-max md:min-w-fit md:max-w-[calc(100vw-2rem)]"
+  [ngClass]="{
+    'shadow-lg shadow-gray-500 bg-blue-950/50 backdrop-blur-sm': !isMobileView() || isMenuOpened(),
+  }"
+>
+  <!--Navbar toggler button (Mobile only)-->
+  <div class="navbar-toggler" [ngClass]="{ 'w-0 overflow-hidden': !isMobileView() }">
+    <button
+      class="rounded-r-full bg-blue-800 border border-blue-200/0 cursor-pointer px-2 py-1 text-gray-100 font-bold hover:bg-blue-950 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+      (click)="toggleMenu()"
+      [ngClass]="{
+        'shadow-md shadow-gray-500': isMobileView() || !isMenuOpened(),
+      }"
+    >
+      <img
+        class="w-6 transition-all"
+        [src]="isMenuOpened() ? 'icons/hidemenu.svg' : 'icons/showmenu.svg'"
+        [ngClass]="{
+          'ml-1': isMenuOpened(),
+        }"
+      />
+    </button>
+  </div>
+
+  <!--Menu Content-->
+  <div
+    class="navbar-content overflow-hidden h-fit my-2 flex items-start justify-between flex-col gap-4 transition-[max-width,width,opacity,translate] duration-300 ease-in-out md:flex-row md:items-center md:my-0 md:w-fit"
+    [ngClass]="{
+      'max-w-0 -translate-x-40  opacity-0': isMobileView() && !isMenuOpened(),
+      'max-w-125 opacity-100': isMobileView() && isMenuOpened(),
+    }"
+  >
+    <!--Content 1 (logo)-->
+    <div class="flex flex-row gap-1 my-2 md:m-0">
+      <h3>BUBBL3N4V</h3>
+      <h3 class="hidden md:inline">
+        <img class="min-w-7 w-7" src="icons/monitor.svg" />
+      </h3>
+      <h3 class="inline md:hidden">
+        <img class="min-w-7 w-7" src="icons/mobile.svg" />
+      </h3>
+    </div>
+
+    <!--Content 2 (Links)-->
+    <div
+      class="flex flex-col justify-between items-center gap-2 md:flex-row my-1 md:flex-wrap md:mx-2 md:my-2 md:max-h-none md:opacity-100"
+    >
+      <a href="#">
+        <button
+          (click)="toggleSubMenu('home')"
+          class="w-64 rounded-full border border-blue-200/0 cursor-pointer px-2 py-1 text-gray-100 font-bold hover:bg-blue-950 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+        >
+          Home
+        </button>
+      </a>
+      <a href="#">
+        <button
+          (click)="toggleSubMenu('products')"
+          class="w-64 rounded-full cursor-pointer px-2 py-1 text-gray-100 font-bold hover:bg-blue-950 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+        >
+          Products
+        </button>
+      </a>
+      <a href="#">
+        <button
+          (click)="toggleSubMenu('contact')"
+          class="w-64 rounded-full cursor-pointer px-2 py-1 text-gray-100 font-bold hover:bg-blue-950 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+        >
+          Contact
+        </button>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!--Sub-menu content-->
+<div
+  class="fixed bg-blue-700/50 backdrop-blur-sm my-2 p-2 rounded-xl"
+  [ngClass]="{
+    hidden: !subMenuOpened(),
+  }"
+  [ngStyle]="{
+    top: currentNavbarPos().bottom + 'px',
+    left: currentNavbarPos().left + 'px',
+    width: ` ${isMobileView() ? '90dvw' : currentNavbarPos().right - currentNavbarPos().left}px`,
+  }"
+>
+  <h5 class="font-bold text-4xl uppercase text-blue-300">{{ subMenuOpened() }}</h5>
+  <div
+    class="content flex flex-col divide-sky-300 divide-y justify-between align-middle gap-2 md:flex-row md:divide-x md:divide-y-0"
+  >
+    <div class="description m-2 pb-4 md:flex-1 md:pb-0 md:pr-4">
+      <h3 class="font-semibold text-2xl text-blue-300">See, what you find here</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua.
+      </p>
+    </div>
+    <div class="submenu-links m-2 flex flex-col justify-between gap-1 md:flex-1">
+      <button
+        class="w-64 rounded-full border border-blue-200/0 cursor-pointer px-2 py-1 text-gray-100 font-bold hover:border-blue-600 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+      >
+        Submenu 1
+      </button>
+      <button
+        class="w-64 rounded-full border border-blue-200/0 cursor-pointer px-2 py-1 text-gray-100 font-bold hover:border-blue-600 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+      >
+        Submenu 2
+      </button>
+      <button
+        class="w-64 rounded-full border border-blue-200/0 cursor-pointer px-2 py-1 text-gray-100 font-bold hover:border-blue-600 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+      >
+        Another submenu
+      </button>
+      <button
+        class="w-64 rounded-full border border-blue-200/0 cursor-pointer px-2 py-1 text-gray-100 font-bold hover:border-blue-600 focus:border focus:border-blue-200 transition duration-300 md:w-32"
+      >
+        Yep, submenuing
+      </button>
+    </div>
+  </div>
+</div>
