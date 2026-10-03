@@ -27,7 +27,7 @@
 
   <!--Menu Content-->
   <div
-    class="navbar-content flex items-center justify-between flex-col gap-4 md:flex-row transition-[max-height,opacity,max-width,translate] duration-300 ease-in-out"
+    class="navbar-content flex items-center justify-between flex-col gap-4 py-2 md:py-0 md:flex-row transition-[max-height,opacity,max-width,translate] duration-300 ease-in-out"
     [ngClass]="{
       'max-h-0 opacity-0': !isHamburgerMenuOpened() && isMobileView(),
       'max-h-96 max-w-full opacity-100': isHamburgerMenuOpened() && isMobileView(),
@@ -54,39 +54,19 @@
       class="flex flex-col justify-between m-8 items-center gap-2 md:flex-row my-1 md:flex-wrap md:mx-2 md:my-4 md:max-h-none md:opacity-100"
     >
       <a href="#">
-        <button
-          class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
-        >
-          Home
-        </button>
+        <button class="btn-navbar-bubble">Home</button>
       </a>
       <a href="#">
-        <button
-          class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
-        >
-          Reference
-        </button>
+        <button class="btn-navbar-bubble">Reference</button>
       </a>
       <a href="#">
-        <button
-          class="w-64 not-even:border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
-        >
-          Prices
-        </button>
+        <button class="btn-navbar-bubble">Prices</button>
       </a>
       <a href="#">
-        <button
-          class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
-        >
-          Contact
-        </button>
+        <button class="btn-navbar-bubble">Contact</button>
       </a>
       <a href="#">
-        <button
-          class="w-64 border rounded cursor-pointer px-2 py-1 text-gray-100 font-bold bg-gray-900 hover:text-blue-200 transition duration-300 md:w-32"
-        >
-          Login
-        </button>
+        <button class="btn-navbar-bubble">Login</button>
       </a>
     </div>
   </div>

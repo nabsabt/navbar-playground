@@ -2,9 +2,10 @@ import { Component, signal } from '@angular/core';
 import { NavbarTopComponent } from './navbars/top-navbar/navbar-top.component';
 import { NavbarBubbleComponent } from './navbars/navbar-bubble/navbar-bubble.component';
 import { MegaMenuComponent } from './navbars/mega-menu/megamenu.component';
+import { FloatingMenuComponent } from './navbars/floating-menu/floating-menu.component';
 
 @Component({
-  imports: [NavbarTopComponent, NavbarBubbleComponent, MegaMenuComponent],
+  imports: [NavbarTopComponent, NavbarBubbleComponent, MegaMenuComponent, FloatingMenuComponent],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
@@ -19,4 +20,4 @@ export class App {
   }
 }
 
-export type NAVBAR = 'megamenu' | 'top' | 'bubble';
+export type NAVBAR = 'megamenu' | 'top' | 'bubble' | 'floating';

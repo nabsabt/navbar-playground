@@ -1,0 +1,34 @@
+<nav
+  #nav
+  class="fixed flex justify-between bg-floating-dark shadow-md shadow-gray-500 h-fit top-1 left-1 mt-1 transition-[border-radius] duration-300 md:translate-y-0 md:px-6 md:left-1/2 md:-translate-x-1/2"
+  [ngClass]="{
+    'rounded-2xl': !isMenuOpened(),
+    'rounded-t-2xl': isMenuOpened(),
+  }"
+>
+  <button class="text-gray-100 hidden cursor-pointer px-2 py-1 text-xl md:inline md:text-2xl">
+    See menu...
+  </button>
+  <button class="h-fit p-2">
+    <img class="w-8 cursor-pointer md:hidden" src="icons/hamburger-menu-orange.svg" />
+  </button>
+</nav>
+
+<!--Dynamic div (content), appearing only after user action-->
+<div
+  #content
+  class="content fixed flex flex-col gap-2 justify-baseline align-middle px-2 py-4 shadow-md shadow-gray-500 bg-floating-dark opacity-100 transition-opacity duration-300 ease-in-out pointer-events-auto rounded-b-2xl rounded-tr-2xl md:flex-row"
+  [ngClass]="{
+    'opacity-0  pointer-events-none': !isMenuOpened(),
+    'opacity-100  pointer-events-auto': isMenuOpened(),
+  }"
+  [ngStyle]="{
+    top: navbarContentPos().bottom + 'px',
+    left: navbarContentPos().left + 'px',
+    width: isMobileView() ? '75dvw' : 'fit-content',
+  }"
+>
+  <button class="btn-menu-floating"><img class="w-6" src="icons/chef-man.svg" />Home</button>
+  <button class="btn-menu-floating"><img class="w-6" src="icons/chef-man.svg" />Price</button>
+  <button class="btn-menu-floating"><img class="w-6" src="icons/chef-man.svg" />References</button>
+</div>
