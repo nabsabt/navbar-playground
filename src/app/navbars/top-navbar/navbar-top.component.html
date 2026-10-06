@@ -1,11 +1,20 @@
 <nav
-  class="fixed w-full top-0 bg-gray-200 border-gray-400 border-b rounded-b-xl flex flex-col justify-between items-center md:flex-row md:px-6"
+  class="fixed w-full top-0 bg-gray-200 dark:bg-gray-900 border-gray-400 border-b rounded-b-xl flex flex-col justify-between items-center md:flex-row md:px-6"
 >
   <!--logo-->
   <div class="flex flex-row gap-1 my-2 md:m-0">
-    <h3>T0PN4V</h3>
-    <h3 class="hidden md:inline"><img class="min-w-7 w-7" src="icons/monitor.svg" /></h3>
-    <h3 class="inline md:hidden"><img class="min-w-7 w-7" src="icons/mobile.svg" /></h3>
+    <h3 class="text-gray-900 dark:text-gray-100">T0PN4V</h3>
+
+    <button class="btn-darkmode-navbar-top" (click)="document.body.classList.toggle('dark')">
+      <img
+        class="w-7"
+        src="{{
+          document.body.classList.contains('dark')
+            ? 'icons/darkmode/light_navbartop.svg'
+            : 'icons/darkmode/dark_navbartop.svg'
+        }}"
+      />
+    </button>
   </div>
 
   <button

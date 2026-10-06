@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  DOCUMENT,
   effect,
   ElementRef,
   HostListener,
@@ -33,6 +34,7 @@ export class MegaMenuComponent implements OnInit, AfterViewInit {
   public isMobileView = signal<boolean>(false);
   public subMenuOpened = signal<string | undefined>('');
 
+  public document = inject(DOCUMENT);
   public currentNavbarPos = signal<{ top: number; right: number; left: number; bottom: number }>({
     top: 0,
     right: 0,

@@ -3,9 +3,8 @@
   [ngClass]="{
     'w-100': isHamburgerMenuOpened(),
     'mx-1': isHamburgerMenuOpened(),
-    'bg-gray-100': isHamburgerMenuOpened() || !isMobileView(),
-    'border-gray-400': isHamburgerMenuOpened() || !isMobileView(),
-    border: isHamburgerMenuOpened() || !isMobileView(),
+    'bg-none': !isHamburgerMenuOpened() && isMobileView(),
+    'bg-gray-100 dark:bg-gray-900': !isMobileView(),
   }"
 >
   <!--Navbar toggler (mobile)-->
@@ -27,7 +26,7 @@
 
   <!--Menu Content-->
   <div
-    class="navbar-content flex items-center justify-between flex-col gap-4 py-2 md:py-0 md:flex-row transition-[max-height,opacity,max-width,translate] duration-300 ease-in-out"
+    class="navbar-content bg-gray-100 dark:bg-gray-900 rounded-2xl flex items-center justify-between flex-col gap-4 py-2 md:py-0 md:flex-row transition-[max-height,opacity,max-width,translate] duration-300 ease-in-out"
     [ngClass]="{
       'max-h-0 opacity-0': !isHamburgerMenuOpened() && isMobileView(),
       'max-h-96 max-w-full opacity-100': isHamburgerMenuOpened() && isMobileView(),
@@ -44,9 +43,17 @@
         'pb-2': isHamburgerMenuOpened(),
       }"
     >
-      <h3>BUBBL3N4V</h3>
-      <h3 class="hidden md:inline"><img class="min-w-7 w-7" src="icons/monitor.svg" /></h3>
-      <h3 class="inline md:hidden"><img class="min-w-7 w-7" src="icons/mobile.svg" /></h3>
+      <h3 class="text-gray-900 dark:text-gray-100">BUBBL3N4V</h3>
+      <button class="btn-darkmode-navbar-bubble" (click)="document.body.classList.toggle('dark')">
+        <img
+          class="w-7"
+          src="{{
+            document.body.classList.contains('dark')
+              ? 'icons/darkmode/light_navbartop.svg'
+              : 'icons/darkmode/dark_navbartop.svg'
+          }}"
+        />
+      </button>
     </div>
 
     <!--Content 2 (Links)-->

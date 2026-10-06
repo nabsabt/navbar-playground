@@ -9,10 +9,27 @@
   <button class="text-gray-100 hidden cursor-pointer px-2 py-1 text-xl md:inline md:text-2xl">
     See menu...
   </button>
-  <button class="h-fit p-2">
-    <img class="w-8 cursor-pointer md:hidden" src="icons/hamburger-menu-orange.svg" />
+  <button
+    (click)="menuTapped()"
+    class="inline h-fit p-2 rounded-xl md:hidden border border-floating-primary"
+  >
+    <img class="w-8 cursor-pointer" src="icons/hamburger-menu-orange.svg" />
   </button>
 </nav>
+
+<!--Dark mode toggler-->
+<div class="fixed top-1 right-1">
+  <button class="btn-darkmode-navbar-top" (click)="document.body.classList.toggle('dark')">
+    <img
+      class="w-7"
+      src="{{
+        document.body.classList.contains('dark')
+          ? 'icons/darkmode/light_navbartop.svg'
+          : 'icons/darkmode/dark_navbartop.svg'
+      }}"
+    />
+  </button>
+</div>
 
 <!--Dynamic div (content), appearing only after user action-->
 <div

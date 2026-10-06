@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, DOCUMENT, inject, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'navbar-bubble',
@@ -10,6 +10,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 export class NavbarBubbleComponent implements OnInit {
   public isHamburgerMenuOpened = signal<boolean>(false);
   public isMobileView = signal<boolean>(false);
+  public document = inject(DOCUMENT);
   private breakPoint = inject(BreakpointObserver);
 
   constructor() {

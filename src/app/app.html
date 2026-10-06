@@ -12,13 +12,13 @@
     <floating-menu></floating-menu>
   }
 }
-<form class="max-w-sm mx-auto mt-50">
+<form class="max-w-sm mx-auto mt-50 text-gray-900 dark:text-gray-100">
   <label for="countries" class="block mb-2.5 text-sm font-medium text-heading"
     >Select an option <em class="font-light">({{ selectedNavbar() }})</em></label
   >
   <select
     id="countries"
-    class="block w-full px-3 py-2.5 bg-blue-100 border rounded-xl text-sm hover:bg-blue-50 hover:cursor-pointer transition duration-200"
+    class="block w-full px-3 py-2.5 bg-blue-100 dark:bg-blue-900 border rounded-xl text-sm hover:dark:bg-blue-950 hover:bg-blue-200 hover:cursor-pointer transition duration-200"
     (change)="onNavbarTypeSelected($event)"
   >
     <option selected class="" value="top">Top Navbar (default)</option>
@@ -30,7 +30,7 @@
 
 <div class="m-5">
   <h1 class="font-semibold text-6xl my-5">Title goes here</h1>
-  <h3 class="font-bold text-gray-600 text-2xl my-5">Subtitle goes here too</h3>
+  <h3 class="font-bold text-2xl my-5">Subtitle goes here too</h3>
   <hr class="m-5" />
   <p class="text-lg">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -56,7 +56,7 @@
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
   <hr class="m-5" />
-  <h3 class="font-bold text-gray-600 text-2xl my-5">Another subtitle</h3>
+  <h3 class="font-bold text-2xl my-5">Another subtitle</h3>
 
   <p class="text-lg">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

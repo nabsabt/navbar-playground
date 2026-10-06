@@ -1,5 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, DOCUMENT, inject, signal } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -10,6 +10,7 @@ import { NgClass } from '@angular/common';
 export class NavbarTopComponent {
   public isHamburgerMenuOpened = signal<boolean>(false);
   private breakPoint = inject(BreakpointObserver);
+  public document = inject(DOCUMENT);
 
   constructor() {
     this.breakPoint.observe('(max-width: 768px)').subscribe((res) => {

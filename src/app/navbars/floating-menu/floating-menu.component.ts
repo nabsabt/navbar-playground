@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  DOCUMENT,
   ElementRef,
   HostListener,
   inject,
@@ -26,7 +27,8 @@ export class FloatingMenuComponent implements AfterViewInit {
   @HostListener('document:click', ['$event'])
   clicked(targetElement: ElementRef['nativeElement']) {
     const clicked = this.element.nativeElement.contains(targetElement.target);
-    if (clicked) {
+
+    if (clicked && !this.isMenuOpened()) {
       this.isMenuOpened.set(true);
     }
   }
@@ -40,6 +42,7 @@ export class FloatingMenuComponent implements AfterViewInit {
   }
   private breakPoint = inject(BreakpointObserver);
 
+  public document = inject(DOCUMENT);
   public isMobileView = signal<boolean>(false);
   public isMenuOpened = signal<boolean>(false);
   public navbarContentPos = signal<{ bottom: number; left: number }>({ bottom: 0, left: 0 });
@@ -63,23 +66,24 @@ export class FloatingMenuComponent implements AfterViewInit {
       });
 
     this.nav.nativeElement.addEventListener('mouseenter', () => {
-      console.log('cursor entered nav');
-
       this.isMenuOpened.set(true);
     });
 
     this.content.nativeElement.addEventListener('mouseenter', () => {
-      console.log('cursor entered content');
-
       this.isMenuOpened.set(true);
     });
     this.nav.nativeElement.addEventListener('mouseleave', () => {
-      console.log('cursor left nav');
       this.isMenuOpened.set(false);
     });
     this.content.nativeElement.addEventListener('mouseleave', () => {
-      console.log('cursor left content');
       this.isMenuOpened.set(false);
     });
+  }
+
+  /**
+   * Only for mobile->
+   */
+  menuTapped() {
+    this.isMenuOpened.set(!this.isMenuOpened());
   }
 }
