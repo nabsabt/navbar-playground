@@ -100,10 +100,18 @@
       </p>
     </div>
     <div class="submenu-links m-2 flex flex-col justify-between gap-1 md:flex-1">
-      <button class="btn-submenu-navbar-megamenu">Submenu 1</button>
-      <button class="btn-submenu-navbar-megamenu">Submenu 2</button>
-      <button class="btn-submenu-navbar-megamenu">Another submenu</button>
-      <button class="btn-submenu-navbar-megamenu">Yep, submenuing</button>
+      <button (click)="menuItemSelected('submenu 1')" class="btn-submenu-navbar-megamenu">
+        Submenu 1
+      </button>
+      <button (click)="menuItemSelected('submenu 2')" class="btn-submenu-navbar-megamenu">
+        Submenu 2
+      </button>
+      <button (click)="menuItemSelected('another submenu')" class="btn-submenu-navbar-megamenu">
+        Another submenu
+      </button>
+      <button (click)="menuItemSelected('yep, submenuing')" class="btn-submenu-navbar-megamenu">
+        Yep, submenuing
+      </button>
     </div>
   </div>
 </div>

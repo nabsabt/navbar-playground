@@ -4,7 +4,6 @@ import {
   AfterViewInit,
   Component,
   DOCUMENT,
-  effect,
   ElementRef,
   HostListener,
   inject,
@@ -48,11 +47,21 @@ export class MegaMenuComponent implements OnInit, AfterViewInit {
       !res.matches ? this.isMenuOpened.set(false) : '';
       !res.matches ? this.isMobileView.set(false) : this.isMobileView.set(true);
     });
+
+    /**
+     * checking for dark mode->
+     */
+    const darkModeOn =
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (darkModeOn) {
+      this.document.body.classList.add('dark');
+    } else {
+      this.document.body.classList.remove('dark');
+    }
   }
 
-  ngOnInit(): void {
-    console.log(`initial view is ${this.isMobileView() ? 'MOBILE' : 'PC'}`);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     fromEvent(window, 'resize')
@@ -79,5 +88,11 @@ export class MegaMenuComponent implements OnInit, AfterViewInit {
 
       this.subMenuOpened.set(submenu);
     }
+  }
+
+  menuItemSelected(value: string) {
+    console.log(`${value} selected`);
+    this.subMenuOpened.set(undefined);
+    this.isMobileView() ? this.isMenuOpened.set(false) : '';
   }
 }

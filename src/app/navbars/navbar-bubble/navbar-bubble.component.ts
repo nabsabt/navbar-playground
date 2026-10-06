@@ -18,6 +18,17 @@ export class NavbarBubbleComponent implements OnInit {
       !res.matches ? this.isHamburgerMenuOpened.set(false) : '';
       !res.matches ? this.isMobileView.set(false) : this.isMobileView.set(true);
     });
+    /**
+     * checking for dark mode->
+     */
+    const darkModeOn =
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (darkModeOn) {
+      this.document.body.classList.add('dark');
+    } else {
+      this.document.body.classList.remove('dark');
+    }
   }
   ngOnInit(): void {
     console.log(`initial view is ${this.isMobileView() ? 'MOBILE' : 'PC'}`);
