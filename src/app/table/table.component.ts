@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, computed, DOCUMENT, inject, input, OnInit, signal } from '@angular/core';
+import { Component, DOCUMENT, inject, input, OnInit, output } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -9,18 +9,16 @@ import { Component, computed, DOCUMENT, inject, input, OnInit, signal } from '@a
 export class TableComponent implements OnInit {
   public tableName = input<string>();
   public tableData = input<Array<any> | undefined>(undefined);
+  public paginatorVal = input<5 | 10 | 15 | 20>(5);
+  public cols = input<Array<string>>([]);
+  public numberOfPages = input<number>(0);
+  public curentpage = input<number>(0);
+
+  public onItemClicked = output<number>();
+  public onPaginationChanched = output<5 | 10 | 15 | 20>();
+  public onPageChanged = output<number>();
+
   public document = inject(DOCUMENT);
-  /**
-   * Had to be defined manually->
-   */
-  public cols = signal<Array<string>>([
-    'User ID',
-    'Name',
-    'Age',
-    'Address',
-    'Registered',
-    'Preferences',
-  ]);
 
   constructor() {
     /**
@@ -37,4 +35,17 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  public onPaginatorValueSelected(event: any) {
+    const value = Number(event.value) as 5 | 10 | 15 | 20;
+    this.onPaginationChanched.emit(value);
+  }
+
+  public onItemSelected(id: number) {
+    this.onItemClicked.emit(id);
+  }
+
+  public onPageStep(step: number) {
+    this.onPageChanged.emit(step);
+  }
 }

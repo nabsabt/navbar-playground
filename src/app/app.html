@@ -67,4 +67,14 @@
   </p>
 </div> -->
 
-<app-table [tableName]="'User table'" [tableData]="testUserData()"></app-table>
+<app-table
+  [tableName]="'User table'"
+  [tableData]="tableInputTestUserData()"
+  [paginatorVal]="currentItemPerPage()"
+  [cols]="['User ID', 'Name', 'Age', 'Address', 'Registered', 'Preferences']"
+  [numberOfPages]="calculatedNumberOfPages()"
+  [curentpage]="currentPage()"
+  (onItemClicked)="itemSelectedFromTable($event)"
+  (onPaginationChanched)="paginatorChangedFromTable($event)"
+  (onPageChanged)="pageChanged($event)"
+></app-table>
