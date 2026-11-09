@@ -44,3 +44,4 @@
 .btn-menu-floating{
   @apply w-32 md:w-36 rounded-full flex gap-1 justify-baseline align-middle cursor-pointer px-2 py-1 bg-floating-dark border border-gray-100 text-gray-100
 }
+
