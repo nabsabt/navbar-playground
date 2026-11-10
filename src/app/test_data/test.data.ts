@@ -48,8 +48,10 @@ export const TEST_USER = [
     userAge: 24,
     userAddress: '8000 Szekesfehervar, Budai ut 33.',
     registerDate: new Date(),
-    preferences: 'Enjoys gaming, science, photography and spending time with friends.',
+    preferences:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
   },
+
   {
     userID: 384726195,
     username: 'Jessica Morgan',

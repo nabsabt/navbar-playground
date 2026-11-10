@@ -72,6 +72,7 @@
   [tableData]="tableInputTestUserData()"
   [paginatorVal]="currentItemPerPage()"
   [cols]="['User ID', 'Name', 'Age', 'Address', 'Registered', 'Preferences']"
+  [colWidthRatio]="[1, 1, 1, 2, 1, 6]"
   [numberOfPages]="calculatedNumberOfPages()"
   [curentpage]="currentPage()"
   (onItemClicked)="itemSelectedFromTable($event)"
