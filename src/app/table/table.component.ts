@@ -9,11 +9,12 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { ConditionalDatePipe } from './custom.date.pipe';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, ConditionalDatePipe],
 })
 export class TableComponent implements OnInit {
   public tableName = input<string>();

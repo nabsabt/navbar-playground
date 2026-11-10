@@ -4,7 +4,12 @@ import { NavbarBubbleComponent } from './navbars/navbar-bubble/navbar-bubble.com
 import { MegaMenuComponent } from './navbars/mega-menu/megamenu.component';
 import { FloatingMenuComponent } from './navbars/floating-menu/floating-menu.component';
 import { TableComponent } from './table/table.component';
-import { TEST_USER } from './test_data/test.data';
+import {
+  TEST_USER,
+  TEST_BOOKS,
+  TEST_USER_COLUMNS,
+  TEST_BOOKS_COLUMNS,
+} from './test_data/test.data';
 
 @Component({
   imports: [
@@ -20,48 +25,55 @@ import { TEST_USER } from './test_data/test.data';
 })
 export class App implements OnInit {
   ngOnInit(): void {
-    this.fetchMockedData();
+    this.fetchMockedData(this.selectedMockedData());
   }
   protected readonly title = signal('navbar-playground');
   public selectedNavbar = signal<NAVBAR>('top');
 
-  public testUserData = signal<Array<{}>>(TEST_USER);
-  public tableInputTestUserData = signal<Array<{}>>([]);
+  public selectedMockedData = signal<'books' | 'users'>('users');
+  public testData = signal<Array<{}>>(TEST_USER);
+  /**
+   * column names have to be set up manually->
+   */
+  public columnNames = signal<Array<string>>(TEST_USER_COLUMNS);
+  public tableInputData = signal<Array<{}>>([]);
   public currentPage = signal<number>(0);
   public currentItemPerPage = signal<(number & 5) | 10 | 15 | 20>(10);
   public calculatedNumberOfPages = signal<number>(0);
 
-  onNavbarTypeSelected(value: any) {
-    console.log(`${value.target.value} selected`);
-    this.selectedNavbar.set(value.target.value);
+  onNavbarTypeSelected(event: any) {
+    this.selectedNavbar.set(event.target.value);
   }
   /**
    * Table logic here->
    */
-  public fetchMockedData() {
-    this.tableInputTestUserData.set(
-      this.testUserData().slice(
+  public onTableContentTypeSelected(event: any) {
+    this.selectedMockedData.set(event.target.value);
+    this.fetchMockedData(event.target.value);
+  }
+
+  public fetchMockedData(mockedData: 'books' | 'users') {
+    const data: Array<any> = mockedData === 'books' ? TEST_BOOKS : TEST_USER;
+    this.columnNames.set(mockedData === 'books' ? TEST_BOOKS_COLUMNS : TEST_USER_COLUMNS);
+    this.tableInputData.set(
+      data.slice(
         this.currentItemPerPage() * this.currentPage(),
         this.currentItemPerPage() * this.currentPage() + this.currentItemPerPage(),
       ),
     );
-    this.calculatedNumberOfPages.set(
-      Math.ceil(this.testUserData().length / this.currentItemPerPage()),
-    );
+    this.calculatedNumberOfPages.set(Math.ceil(this.testData().length / this.currentItemPerPage()));
   }
 
-  public itemSelectedFromTable(id: number) {
-    console.log(`item ${id} is selected from table`);
-  }
+  public itemSelectedFromTable(id: number) {}
 
   public paginatorChangedFromTable(paginator: 5 | 10 | 15 | 20) {
     this.currentItemPerPage.set(paginator);
     this.currentPage.set(0);
-    this.fetchMockedData();
+    this.fetchMockedData(this.selectedMockedData());
   }
   public pageChanged(pageStep: number) {
     this.currentPage.set(this.currentPage() + pageStep);
-    this.fetchMockedData();
+    this.fetchMockedData(this.selectedMockedData());
   }
 }
 
